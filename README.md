@@ -3,10 +3,10 @@
 A lightweight Python agent that captures local system metrics (CPU & RAM) and transmits them to **AWS CloudWatch** for real-time monitoring and alerting.
 
 ## Features
-- **Real-time Monitoring:** Captures CPU and Memory usage using `psutil`.
-- **Cloud Integration:** Pushes custom metrics to AWS CloudWatch using `boto3`.
-- **Alerting:** Configured with AWS SNS to trigger email alarms when CPU usage exceeds thresholds.
-- **Security:** Implements IAM roles with least-privilege permissions (no root access).
+- **Custom Metrics Agent:** A Python script that acts as a custom producer, collecting CPU & RAM usage via `psutil`.
+- **Cloud Integration:** Seamlessly pushes data to **AWS CloudWatch** using the official `boto3` SDK.
+- **Observability Ready:** Data structure allows for granular **CloudWatch Alarms** setup (e.g., triggering SNS emails on high CPU).
+- **Security:** Designed to run with **IAM Roles** and least-privilege permissions, avoiding hardcoded credentials in the source code.
 
 ## Technologies
 - **Python 3**
@@ -29,6 +29,7 @@ A lightweight Python agent that captures local system metrics (CPU & RAM) and tr
    ```
 
 3. **Configure AWS Credentials**
+   Ensure your IAM User has the **CloudWatchAgentServerPolicy** attached.
    ```bash
    aws configure
    ```
@@ -37,3 +38,6 @@ A lightweight Python agent that captures local system metrics (CPU & RAM) and tr
    ```bash
    python monitor.py
    ```
+
+## Dashboard Preview
+![Dashboard Preview](./dashboard.png)
